@@ -15,10 +15,20 @@ pipeline {
               sh "ls -ltra"
            }
        }
+      
+       stage('docker-login') {
+           steps {
+               script {
+                  docker.withRegistry( '', 'DOCKER_USERNAME' ) {
+                     dockerImage.push("$BUILD_NUMBER")
+                     dockerImage.push('latest')
+                  }
+               }
+           }
+       }
    }
    post {
       always {
-         docker.withRegistry( '', 'DOCKER_USERNAME' ) {dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')}
          sh "docker system prune -a -f"
          sh "docker-compose ps"
       }
