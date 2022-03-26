@@ -20,7 +20,7 @@ pipeline {
            steps {
                script {
                   docker.withRegistry( '', 'DOCKER_USERNAME' ) {
-                     sh "docker push dpage/pgadmin4:latest"
+
                   }
                }
            }
