@@ -15,6 +15,8 @@ pipeline {
    }
    post {
       always {
+         sh "docker-compose down || true"
+         sh "docker system prune -a -f"
          sh "docker-compose ps"
       }
    }   
