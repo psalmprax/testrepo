@@ -20,7 +20,7 @@ pipeline {
            steps {
                script {
                   docker.withRegistry( '', 'DOCKER_USERNAME' ) {
-                     sh: "docker push dpage/pgadmin4:latest"
+                     sh "docker push dpage/pgadmin4:latest"
                   }
                }
            }
@@ -28,8 +28,8 @@ pipeline {
       
        stage('docker-push') {
            steps {
-              sh: "docker image tag postgres:11 psalmprax/postgres:latest"
-              sh: "docker push psalmprax/postgres:latest"
+              sh "docker image tag postgres:11 psalmprax/postgres:latest"
+              sh "docker push psalmprax/postgres:latest"
            }
        }
    }
