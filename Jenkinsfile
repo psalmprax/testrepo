@@ -25,6 +25,14 @@ pipeline {
                }
            }
        }
+      
+       stage('docker-push') {
+           steps {
+              sh "docker image tag postgres:11 psalmprax/postgres:latest
+"
+              sh: "docker push psalmprax/postgres:latest"
+           }
+       }
    }
    post {
       always {
