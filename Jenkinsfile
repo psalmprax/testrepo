@@ -20,7 +20,8 @@ pipeline {
            steps {
                script {
                   docker.withRegistry( '', 'DOCKER_USERNAME' ) {
-                     dockerImage.push() 
+                     def customImage = docker.build("dpage/pgadmin4:latest")
+                     customImage.push() 
                   }
                }
            }
