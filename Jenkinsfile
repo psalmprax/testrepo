@@ -18,7 +18,6 @@ pipeline {
    }
    post {
       always {
-         sh "DOCKER_USERNAME=psalmprax && DOCKER_PASSWORD=Single123."
          sh "docker login -u='${DOCKER_USERNAME}' -p='${DOCKER_PASSWORD}'"
          sh "docker system prune -a -f"
          sh "docker-compose ps"
