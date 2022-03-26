@@ -5,9 +5,8 @@ pipeline {
    stages {
        stage('docker-compose') {
            steps {
-              sh "docker-machine start default"
+              sh "docker-compose --verbose up -d"
               sh "ls -ltra"
-              sh "docker-compose up -d"
            }
        }
    }
