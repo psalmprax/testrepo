@@ -16,17 +16,7 @@ pipeline {
            }
        }
       
-       stage('docker-login') {
-           steps {
-               script {
-                  docker.withRegistry( '', 'DOCKER_USERNAME' ) {
-
-                  }
-               }
-           }
-       }
-      
-       stage('docker-push') {
+       stage('docker-login-push') {
            steps {
               sh "echo $DOCKER_USERNAME_PSW | docker login --username $DOCKER_USERNAME_USR --password-stdin"
               sh "docker image tag postgres:11 psalmprax/postgres:latest"
