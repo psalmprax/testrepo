@@ -6,14 +6,14 @@ pipeline {
        stage('docker-compose') {
            steps {
               sh "ls -ltra"
-              sh "sudo docker-compose up -d"
+              sh "docker-compose up -d"
               
            }
        }
    }
    post {
       always {
-         sh "sudo docker-compose down || true"
+         sh "docker-compose down || true"
       }
    }   
 }
