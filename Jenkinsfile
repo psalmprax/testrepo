@@ -18,8 +18,7 @@ pipeline {
    }
    post {
       always {
-         sh "docker login -u='${DOCKER_USERNAME}' -p='${DOCKER_PASSWORD}'"
-         sh "echo 'Single123.' | docker login --username 'psalmprax' --password-stdin"
+         docker.withRegistry( '', 'DOCKER_USERNAME' ) {dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')}
          sh "docker system prune -a -f"
          sh "docker-compose ps"
       }
