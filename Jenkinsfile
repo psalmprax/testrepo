@@ -20,8 +20,7 @@ pipeline {
            steps {
                script {
                   docker.withRegistry( '', 'DOCKER_USERNAME' ) {
-                     dockerImage.push("$BUILD_NUMBER")
-                     dockerImage.push('latest')
+                     dockerImage.push() 
                   }
                }
            }
